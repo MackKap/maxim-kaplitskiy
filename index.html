@@ -474,11 +474,36 @@ footer p {
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .capabilities { grid-template-columns: 1fr; }
-  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .metrics-grid { grid-template-columns: 1fr; }
   .project-header { flex-direction: column; }
   .project-links { justify-content: flex-start; }
   .stack-row { flex-direction: column; gap: 8px; }
   h1 { font-size: 36px; }
+
+  /* Nav — имя над ссылками на мобиле */
+  .nav-name { display: block; }
+  .nav-inner {
+    padding: 0 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .nav-links a {
+    font-size: 12px;
+  }
+
+  /* Metrics — одна колонка, убираем лишние отступы */
+  .metric {
+    padding: 20px 18px;
+  }
+  .metric-num {
+    font-size: 28px;
+  }
 }
 </style>
 </head>
