@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maxim Kaplitskiy — AI Automation & No-code Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FAFAF8;
+  --bg2: #F2F0EB;
+  --text: #141412;
+  --text-muted: #888780;
+  --text-light: #B8B6B0;
+  --accent: #1A6B3C;
+  --accent-light: #E8F3ED;
+  --border: #E4E2DC;
+  --radius: 8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Layout ── */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-child { border-bottom: none; }
+
+/* ── Nav ── */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 14px 0;
+}
+
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  transition: color 0.15s;
+  font-weight: 400;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(38px, 7vw, 58px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.hero-sub strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.btn-primary:hover { background: #333; }
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-outline:hover { background: var(--bg2); border-color: #ccc; }
+
+/* ── Section headers ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+/* ── What I do ── */
+.capabilities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.cap-card {
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.cap-icon {
+  font-size: 22px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.cap-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.cap-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── Metrics ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.metric {
+  background: var(--bg);
+  padding: 28px 24px;
+}
+
+.metric-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.metric-num span {
+  color: var(--accent);
+}
+
+.metric-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ── Projects ── */
+.projects { display: flex; flex-direction: column; gap: 40px; margin-top: 8px; }
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.project-header {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-title-block {}
+
+.project-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.project-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.project-links {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.project-link {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.project-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.project-body {
+  padding: 24px 28px;
+}
+
+.project-summary {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.project-summary strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.project-achievements {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.project-achievements li {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.project-achievements li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 12px;
+  top: 1px;
+}
+
+.project-achievements li strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.tag.highlight {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: #C5DFD0;
+}
+
+/* ── Stack ── */
+.stack-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.stack-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.stack-category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.stack-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* ── Contact ── */
+.contact-block {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  transition: all 0.15s;
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.contact-note {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  font-weight: 300;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 32px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .capabilities { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .project-header { flex-direction: column; }
+  .project-links { justify-content: flex-start; }
+  .stack-row { flex-direction: column; gap: 8px; }
+  h1 { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Maxim Kaplitskiy</span>
+    <div class="nav-links">
+      <a href="#what-i-do">What I do</a>
+      <a href="#results">Results</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-tag">Available for new projects</div>
+    <h1>AI Automation<br>& No-code Architect</h1>
+    <p class="hero-sub">
+      I build <strong>AI-powered SaaS platforms and automation systems</strong> that replace manual work — from first prototype to production. 5+ years delivering real products for European and international clients.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View projects →</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- What I Do -->
+<section id="what-i-do">
+  <div class="container">
+    <div class="section-label">What I do</div>
+    <div class="capabilities">
+
+      <div class="cap-card">
+        <span class="cap-icon">🤖</span>
+        <div class="cap-title">AI & LLM Integration</div>
+        <p class="cap-desc">Voice agents, automated reporting pipelines, document processing with GPT-4. Built when AI for business was still uncharted — not a trend follower.</p>
+      </div>
+
+      <div class="cap-card">
+        <span class="cap-icon">⚡</span>
+        <div class="cap-title">Automation Systems</div>
+        <p class="cap-desc">End-to-end workflow automation via n8n, Zapier, custom APIs. Replacing hours of manual work with systems that run without supervision.</p>
+      </div>
+
+      <div class="cap-card">
+        <span class="cap-icon">🏗️</span>
+        <div class="cap-title">SaaS Architecture</div>
+        <p class="cap-desc">Multi-tenant platforms with proper data architecture, access control, and GDPR compliance. Built to scale from MVP to 20+ enterprise clients.</p>
+      </div>
+
+      <div class="cap-card">
+        <span class="cap-icon">👥</span>
+        <div class="cap-title">Technical Leadership</div>
+        <p class="cap-desc">Hiring, sprint planning, stakeholder management. Led cross-functional teams of up to 13 people while staying hands-on in the codebase.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section id="results">
+  <div class="container">
+    <div class="section-label">Results</div>
+    <div class="metrics-grid">
+
+      <div class="metric">
+        <div class="metric-num">3,000<span>→</span>900</div>
+        <div class="metric-desc">Staff-hours for ESRS report prep, cut via AI pipeline at WeShyft</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-num">20<span>+</span></div>
+        <div class="metric-desc">European enterprise clients scaled in under 2 years on a platform built from zero</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-num">€430<span>K</span></div>
+        <div class="metric-desc">Seed round secured — investor-ready product delivered contributed to closing the deal</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-num">2.5<span>wk</span></div>
+        <div class="metric-desc">Fastest MVP to production — Car Wash booking platform for InDrive, zero to live</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-num">&lt;10<span>min</span></div>
+        <div class="metric-desc">Response time on critical incidents — established and maintained across WeShyft production</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-num">13<span>+</span></div>
+        <div class="metric-desc">People managed across WeShyft engagement — junior devs to senior DevOps, designer, Python engineer</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <div class="projects">
+
+      <!-- WeShyft -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title-block">
+            <div class="project-name">WeShyft</div>
+            <div class="project-meta">First Engineer → Tech Lead · May 2022 – Mar 2025 · Remote, Germany</div>
+          </div>
+          <div class="project-links">
+            <a href="https://www.weshyft.com/" target="_blank" class="project-link">↗ Website</a>
+            <a href="https://drive.google.com/file/d/1QpXUaRo77ny4mElvy8kNRaoyif_eUA4T/view?usp=sharing" target="_blank" class="project-link">↗ Client feedback</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-summary">
+            B2B ESG SaaS for the German market — helping mid-sized companies meet CSRD/ESRS compliance requirements. <strong>Built the entire platform from scratch</strong>, progressed from sole engineer to leading a cross-functional team of 13+ people.
+          </p>
+          <ul class="project-achievements">
+            <li><strong>Platform scope</strong> — four full modules built and maintained: Sustainability Reporting, Carbon Accounting (Scope 1/2/3), Supplier Audit Management, ESG Project Management.</li>
+            <li><strong>AI reporting pipeline</strong> — automated ESRS report generation using company onboarding documents. Cut preparation time from 3,000+ to under 900 staff-hours. One of the first ESG platforms in Europe to take this approach, built in 2022–2023.</li>
+            <li><strong>Report generation pipeline</strong> — integrated Docmosis end-to-end: reporting data → processing → final formatted document ready for submission.</li>
+            <li><strong>Airtable integration</strong> — connected Airtable as a data entry interface for ESG framework experts, eliminating the need to work directly inside the platform.</li>
+            <li><strong>Custom TinyMCE plugin</strong> — co-developed with a Python engineer from scratch; no existing plugin had the required functionality, so we built one.</li>
+            <li><strong>Multi-tenant architecture</strong> — Supabase RLS with two-level access control by company role and individual permissions. GDPR-compliant data residency.</li>
+            <li><strong>Enterprise SSO</strong> — full Microsoft Entra ID (Azure AD) integration built from scratch after hitting tooling limitations with a custom OAuth flow.</li>
+            <li><strong>Team & delivery</strong> — hired and led up to 5 direct reports; sprint planning, stakeholder management, feedback-to-release in as little as 1 hour, critical incident response under 10 minutes.</li>
+            <li><strong>Investor readiness</strong> — delivered production-ready product that contributed to the company's €430K seed round.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag highlight">Azure OpenAI</span>
+            <span class="tag highlight">AI Pipeline</span>
+            <span class="tag">Bubble.io</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Airtable</span>
+            <span class="tag">AWS Lambda</span>
+            <span class="tag">Docmosis</span>
+            <span class="tag">Microsoft Entra ID</span>
+            <span class="tag">Multi-tenant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMAPAS -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title-block">
+            <div class="project-name">SMAPAS</div>
+            <div class="project-meta">Sole Developer & Architect · Mar 2025 – Present · Remote</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-summary">
+            <strong>AI Voice Agent SaaS platform built solo from scratch.</strong> Businesses use it to create, configure and deploy voice bots that handle inbound and outbound phone calls automatically.
+          </p>
+          <ul class="project-achievements">
+            <li><strong>Voice agent management</strong> — agent creation from templates, phone number assignment, inbound/outbound calls, voice selection from Retell AI library.</li>
+            <li><strong>AI processing</strong> — real-time call transcription, AI-generated per-call summaries, audio file upload with automatic transcription via Azure OpenAI (GPT-4).</li>
+            <li><strong>Additional tools</strong> — chat interface, text generation via custom prompts, image generation via DALL·E (Azure).</li>
+            <li><strong>Architecture</strong> — multi-tenant platform, full stack owned solo: Bubble.io frontend/backend, Retell AI for voice, Azure Communication Services for telephony.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag highlight">Retell AI</span>
+            <span class="tag highlight">Azure OpenAI (GPT-4)</span>
+            <span class="tag highlight">DALL·E</span>
+            <span class="tag">Bubble.io</span>
+            <span class="tag">Azure Communication Services</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Multi-tenant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- InDrive -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title-block">
+            <div class="project-name">InDrive — SuperApp MVPs</div>
+            <div class="project-meta">Sole Developer & Team Lead · Jun 2021 – Dec 2022 · Contractor, Cyprus</div>
+          </div>
+          <div class="project-links">
+            <a href="https://indrive.com/" target="_blank" class="project-link">↗ inDrive</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-summary">
+            Three MVP hypotheses built for inDrive's SuperApp strategy — direct collaboration with the product team, full ownership from discovery to deploy. One hypothesis evolved into <strong>inDrive Groceries: NPS 83%, 5 orders/user/month</strong>.
+          </p>
+          <ul class="project-achievements">
+            <li><strong>Group Food Delivery</strong> (2021) — 5 research scenarios, API integration with local delivery aggregator, analytics tooling, WebView integration into InDrive's mobile app.</li>
+            <li><strong>Car Wash</strong> (2022) — booking platform with analytics dashboard and Telegram notifications. <strong>Delivered in 2.5 weeks.</strong></li>
+            <li><strong>Group Buy</strong> (2022) — solo MVP in 1.5 months, then recruited and onboarded a 5-person mid-to-senior dev team who continued development for 1.5 years.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag">Bubble.io</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Telegram API</span>
+            <span class="tag">Analytics</span>
+            <span class="tag">WebView</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Stack -->
+<section id="stack">
+  <div class="container">
+    <div class="section-label">Stack</div>
+    <div class="stack-groups">
+      <div class="stack-row">
+        <span class="stack-category">AI</span>
+        <div class="stack-items">
+          <span class="tag highlight">Azure OpenAI</span>
+          <span class="tag highlight">Retell AI</span>
+          <span class="tag highlight">DALL·E</span>
+          <span class="tag highlight">n8n</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-category">Build</span>
+        <div class="stack-items">
+          <span class="tag">Bubble.io</span>
+          <span class="tag">WeWeb</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">REST API</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-category">Data</span>
+        <div class="stack-items">
+          <span class="tag">Supabase</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Xano</span>
+          <span class="tag">Airtable</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-category">Infra</span>
+        <div class="stack-items">
+          <span class="tag">AWS Lambda</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Azure Communication Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2>Let's work together</h2>
+    <p style="font-size: 15px; color: var(--text-muted); margin: 8px 0 28px; font-weight: 300;">Open to senior roles, consulting engagements, and interesting projects. Remote-first.</p>
+    <div class="contact-block">
+      <a href="mailto:mackkapl@gmail.com" class="contact-link">
+        ✉ mackkapl@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/maxim-kaplitskiy-979325213" target="_blank" class="contact-link">
+        in LinkedIn
+      </a>
+    </div>
+    <p class="contact-note">English B2+ · Russian native · Usually responds within a few hours</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Maxim Kaplitskiy · 2025</p>
+  </div>
+</footer>
+
+</body>
+</html>
