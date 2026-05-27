@@ -657,9 +657,11 @@ footer p {
           </p>
           <ul class="project-achievements">
             <li><strong>Delivery process built from scratch</strong> — Scrum-based sprints with backlog prioritisation, velocity tracking, and lead time monitoring; feedback-to-production as fast as 1 hour, critical incident response under 10 minutes.</li>
-            <li><strong>AI reporting pipeline</strong> — automated ESRS report generation via Azure OpenAI. Cut preparation time from 3,000+ to under 900 staff-hours (−70%). One of the first ESG platforms in Europe to ship this, 2022–2023.</li>
+            <li><strong>AI reporting pipeline</strong> — Cut ESRS compliance workload by 70% (3,000+ → under 900 staff-hours) — one of the first pipelines of this kind on the European ESG market, shipped in 2023. Built with no precedent: ran parallel workstreams (document ingestion, web scraping, structured Q&A), established a validation loop with ESG domain specialists and real users, killed the web scraping direction after 2 weeks on signal — too noisy, too slow, too costly. Final pipeline: user documents + structured Q&A, company onboarding under 10 minutes.</li>
             <li><strong>Stakeholder management</strong> — managed scope negotiations, client escalations, and executive presentations; designed communication protocols eliminating ad-hoc developer interruptions during active sprints.</li>
+            <li><strong>Sprint integrity</strong> — stabilised delivery predictability after a co-founder was routinely bypassing the sprint process — assigning tasks directly to developers and breaking cadence. Introduced a trade-off protocol: every unplanned request came with an explicit cost — "we can do this, but X shifts out — your call." Iterated the constraint until ad-hoc interruptions stopped entirely.</li>
             <li><strong>Cross-functional team leadership</strong> — hired and led up to 5 direct reports (Bubble.io developers junior–senior, Python engineer, designer, DevOps); 13+ people across the full engagement.</li>
+            <li><strong>Engineer retention</strong> — retained a key engineer at risk of leaving through a structured plan: salary adjustment, personal development roadmap, and weekly mentoring from a senior specialist; secured 6+ months of delivery continuity; departing engineer independently sourced and introduced their own replacement — handoff completed without interrupting delivery.</li>
             <li><strong>Technical scoping</strong> — translated client wishlists into milestone-based delivery plans with explicit trade-offs; reduced build-rework cycles by introducing solution design before implementation.</li>
             <li><strong>Enterprise integrations</strong> — Microsoft Entra ID (Azure AD) SSO built from scratch after hitting undocumented vendor limitations; custom TinyMCE plugin co-developed with Python engineer to unblock critical client feature.</li>
             <li><strong>Incident management</strong> — resolved data cross-tenant exposure incident with zero client complaints through immediate log analysis and coordinated follow-up communication; introduced dev/staging/prod separation.</li>
@@ -826,5 +828,26 @@ footer p {
   </div>
 </footer>
 
+<script>
+  // Offset anchor scroll to account for sticky header
+  document.addEventListener('DOMContentLoaded', () => {
+    const NAV_HEIGHT = document.querySelector('nav').offsetHeight + 16;
+    if (location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(location.hash);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT, behavior: 'smooth' });
+      }, 50);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const el = document.querySelector(a.getAttribute('href'));
+        if (!el) return;
+        e.preventDefault();
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT, behavior: 'smooth' });
+        history.pushState(null, '', a.getAttribute('href'));
+      });
+    });
+  });
+</script>
 </body>
 </html>
